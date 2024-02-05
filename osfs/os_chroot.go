@@ -59,7 +59,11 @@ func (fs *ChrootOS) Rename(from, to string) error {
 }
 
 func (fs *ChrootOS) MkdirAll(path string, perm os.FileMode) error {
-	return os.MkdirAll(path, defaultDirectoryMode)
+	return os.MkdirAll(path, perm)
+}
+
+func (fs *ChrootOS) Mkdir(path string, perm os.FileMode) error {
+	return os.Mkdir(path, perm)
 }
 
 func (fs *ChrootOS) Open(filename string) (billy.File, error) {

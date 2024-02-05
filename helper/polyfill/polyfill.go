@@ -55,6 +55,14 @@ func (h *Polyfill) MkdirAll(filename string, perm os.FileMode) error {
 	return h.Basic.(billy.Dir).MkdirAll(filename, perm)
 }
 
+func (h *Polyfill) Mkdir(filename string, perm os.FileMode) error {
+	if !h.c.dir {
+		return billy.ErrNotSupported
+	}
+
+	return h.Basic.(billy.Dir).Mkdir(filename, perm)
+}
+
 func (h *Polyfill) Symlink(target, link string) error {
 	if !h.c.symlink {
 		return billy.ErrNotSupported

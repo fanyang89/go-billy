@@ -111,6 +111,8 @@ type Dir interface {
 	// perm are used for all directories that MkdirAll creates. If path is/
 	// already a directory, MkdirAll does nothing and returns nil.
 	MkdirAll(filename string, perm os.FileMode) error
+	// Mkdir creates a directory named path
+	Mkdir(filename string, perm os.FileMode) error
 }
 
 // Symlink abstract the symlink related operations in a storage-agnostic
@@ -164,7 +166,7 @@ type File interface {
 	// Name returns the name of the file as presented to Open.
 	Name() string
 	io.Writer
-	// TODO: Add io.WriterAt for v6  
+	// TODO: Add io.WriterAt for v6
 	// io.WriterAt
 	io.Reader
 	io.ReaderAt

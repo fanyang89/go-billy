@@ -26,6 +26,7 @@ import (
 	"strings"
 
 	securejoin "github.com/cyphar/filepath-securejoin"
+
 	"github.com/go-git/go-billy/v5"
 )
 
@@ -94,6 +95,14 @@ func (fs *BoundOS) MkdirAll(path string, perm os.FileMode) error {
 		return err
 	}
 	return os.MkdirAll(dir, perm)
+}
+
+func (fs *BoundOS) Mkdir(path string, perm os.FileMode) error {
+	dir, err := fs.abs(path)
+	if err != nil {
+		return err
+	}
+	return os.Mkdir(dir, perm)
 }
 
 func (fs *BoundOS) Open(filename string) (billy.File, error) {

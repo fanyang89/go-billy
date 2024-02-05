@@ -151,6 +151,15 @@ func (fs *ChrootHelper) MkdirAll(filename string, perm os.FileMode) error {
 	return fs.underlying.(billy.Dir).MkdirAll(fullpath, perm)
 }
 
+func (fs *ChrootHelper) Mkdir(filename string, perm os.FileMode) error {
+	fullpath, err := fs.underlyingPath(filename)
+	if err != nil {
+		return err
+	}
+
+	return fs.underlying.(billy.Dir).Mkdir(fullpath, perm)
+}
+
 func (fs *ChrootHelper) Lstat(filename string) (os.FileInfo, error) {
 	fullpath, err := fs.underlyingPath(filename)
 	if err != nil {
