@@ -115,6 +115,15 @@ func (fs *ChrootHelper) Remove(path string) error {
 	return fs.underlying.Remove(fullpath)
 }
 
+func (fs *ChrootHelper) RemoveAll(path string) error {
+	fullpath, err := fs.underlyingPath(path)
+	if err != nil {
+		return err
+	}
+
+	return fs.underlying.RemoveAll(fullpath)
+}
+
 func (fs *ChrootHelper) Join(elem ...string) string {
 	return fs.underlying.Join(elem...)
 }

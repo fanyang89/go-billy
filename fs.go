@@ -81,6 +81,8 @@ type Basic interface {
 	Rename(oldpath, newpath string) error
 	// Remove removes the named file or directory.
 	Remove(filename string) error
+	// RemoveAll removes all named files or directories.
+	RemoveAll(filename string) error
 	// Join joins any number of path elements into a single path, adding a
 	// Separator if necessary. Join calls filepath.Clean on the result; in
 	// particular, all empty strings are ignored. On Windows, the result is a
